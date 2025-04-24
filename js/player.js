@@ -5,14 +5,16 @@ class Player{
         this.width = width;
         this.height = height;
         this.color = color;
-        this.gravityStrength = 10;
+        this.gravityStrength = 100;
         this.canMove = true;
     }
 
     collision(){
-        if(this.y + this.height > canvas.height){
-            // this.canMove = false;
-            this.y = canvas.height - 20
+        let futureY = (this.y + this.height) + this.gravityStrength;
+
+        if(futureY > canvas.height){
+            this.gravityStrength = 0;
+            this.canMove = false;
         }
     }
 
